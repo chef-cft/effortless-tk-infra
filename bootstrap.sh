@@ -19,37 +19,38 @@ else
   groupadd hab && true
 fi
 
+results_folder="/tmp/habitat/results"
+pkg_origin=$1
+pkg_name=$2
+
 export HAB_ORIGIN=aig
 cd /tmp/habitat
 hab pkg install core/hab-studio
 hab origin key generate
 hab studio run build
 
-# pkg_origin=$1
-# pkg_name=$2
+echo "Building $pkg_origin/$pkg_name"
 
-# echo "Building $pkg_origin/$pkg_name"
+latest_hart_file=$(ls -1art $results_folder/$pkg_origin-$pkg_name* |tail -1)
+echo "Latest hart file is $latest_hart_file"
 
-# latest_hart_file=$(ls -1art /tmp/results/$pkg_origin-$pkg_name* |tail -1)
-# echo "Latest hart file is $latest_hart_file"
+echo "Installing $latest_hart_file"
+hab pkg install $latest_hart_file
 
-# echo "Installing $latest_hart_file"
-# hab pkg install $latest_hart_file
+echo "Determing pkg_prefix for $latest_hart_file"
+# pkg_prefix=$(find /hab/pkgs/$pkg_origin/chef-base -maxdepth 2 -mindepth 2 | sort | tail -n 1)
+pkg_prefix=$(find /hab/pkgs/$pkg_origin/$pkg_name -maxdepth 2 -mindepth 2 | sort | tail -n 1)
 
-# echo "Determing pkg_prefix for $latest_hart_file"
-# # pkg_prefix=$(find /hab/pkgs/$pkg_origin/chef-base -maxdepth 2 -mindepth 2 | sort | tail -n 1)
-# pkg_prefix=$(find /hab/pkgs/$pkg_origin/$pkg_name -maxdepth 2 -mindepth 2 | sort | tail -n 1)
+echo "Found $pkg_prefix"
 
-# echo "Found $pkg_prefix"
+echo "{\"bootstrap_mode\": true}" > $results_folder/bootstrap.json
 
-# echo "{\"bootstrap_mode\": true}" > /tmp/results/bootstrap.json
+echo "Running chef for $pkg_origin/$pkg_name"
+cd $pkg_prefix
+if [ -n "$bootstrap" ]; then
+  hab pkg exec $pkg_origin/$pkg_name chef-client -z -j $results_folder/bootstrap.json -c $pkg_prefix/config/bootstrap-config.rb
+else
+  hab pkg exec $pkg_origin/$pkg_name chef-client -z -c $pkg_prefix/config/bootstrap-config.rb
+fi
 
-# echo "Running chef for $pkg_origin/$pkg_name"
-# cd $pkg_prefix
-# if [ -n "$bootstrap" ]; then
-#   hab pkg exec $pkg_origin/$pkg_name chef-client -z -j /tmp/results/bootstrap.json -c $pkg_prefix/config/bootstrap-config.rb
-# else
-#   hab pkg exec $pkg_origin/$pkg_name chef-client -z -c $pkg_prefix/config/bootstrap-config.rb
-# fi
-
-# rm /tmp/results/bootstrap.json
+rm $results_folder/bootstrap.json
