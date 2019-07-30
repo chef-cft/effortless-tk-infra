@@ -1,0 +1,190 @@
+{
+  "revision_id": "8e9c9b47e4fe35743ac7f9161de132c19c444a003bce5a6be0684a1b9282fbd2",
+  "name": "base",
+  "run_list": [
+    "recipe[myapp::default]",
+    "recipe[patching::default]",
+    "recipe[hardening::default]"
+  ],
+  "included_policy_locks": [
+
+  ],
+  "cookbook_locks": {
+    "hardening": {
+      "version": "0.1.0",
+      "identifier": "649df2326dfe0c15a2880cf0486bfbd230738dd3",
+      "dotted_decimal_identifier": "28321161224781324.6089679727249515.276880174583251",
+      "source": "../cookbooks/hardening",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "git@github.com:chef-cft/effortless-tk-testing.git",
+        "revision": "a7f094b4ba121893faec24a5983620d3996288ac",
+        "working_tree_clean": false,
+        "published": true,
+        "synchronized_remote_branches": [
+          "origin/master"
+        ]
+      },
+      "source_options": {
+        "path": "../cookbooks/hardening"
+      }
+    },
+    "myapp": {
+      "version": "0.2.0",
+      "identifier": "4185bc5f990d32410c22ec7425287f5f032c197d",
+      "dotted_decimal_identifier": "18442917590404402.18309217621648680.140046051842429",
+      "source": "../cookbooks/myapp",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "git@github.com:chef-cft/effortless-tk-testing.git",
+        "revision": "a7f094b4ba121893faec24a5983620d3996288ac",
+        "working_tree_clean": false,
+        "published": true,
+        "synchronized_remote_branches": [
+          "origin/master"
+        ]
+      },
+      "source_options": {
+        "path": "../cookbooks/myapp"
+      }
+    },
+    "os-hardening": {
+      "version": "4.0.0",
+      "identifier": "e20b98be94004b4013698889ce3ce232f88fbb27",
+      "dotted_decimal_identifier": "63626095396913227.18035742492708412.248708546411303",
+      "cache_key": "os-hardening-4.0.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/os-hardening/versions/4.0.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/os-hardening/versions/4.0.0/download",
+        "version": "4.0.0"
+      }
+    },
+    "patching": {
+      "version": "0.1.0",
+      "identifier": "d794c3bc26d765eab0f3c99c822d30ab3e2ed0ec",
+      "dotted_decimal_identifier": "60680688388986725.66059705656312365.53512040796396",
+      "source": "../cookbooks/patching",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "git@github.com:chef-cft/effortless-tk-testing.git",
+        "revision": "a7f094b4ba121893faec24a5983620d3996288ac",
+        "working_tree_clean": false,
+        "published": true,
+        "synchronized_remote_branches": [
+          "origin/master"
+        ]
+      },
+      "source_options": {
+        "path": "../cookbooks/patching"
+      }
+    },
+    "windows-hardening": {
+      "version": "0.9.1",
+      "identifier": "fb514509b65b7fa504bdf236ec6ece70d9657452",
+      "dotted_decimal_identifier": "70739576111913855.46448585016274030.226984078963794",
+      "cache_key": "windows-hardening-0.9.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/windows-hardening/versions/0.9.1/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/windows-hardening/versions/0.9.1/download",
+        "version": "0.9.1"
+      }
+    },
+    "windows-security-policy": {
+      "version": "0.3.9",
+      "identifier": "b2e3ba1e3ced20a311a7903a59c8198183a82ec7",
+      "dotted_decimal_identifier": "50352934365228320.45899832580790728.28044050312903",
+      "cache_key": "windows-security-policy-0.3.9-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/windows-security-policy/versions/0.3.9/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/windows-security-policy/versions/0.3.9/download",
+        "version": "0.3.9"
+      }
+    }
+  },
+  "default_attributes": {
+    "hardening": {
+
+    },
+    "patching": {
+
+    },
+    "applications": {
+      "linux": {
+
+      },
+      "windows": {
+
+      }
+    },
+    "myapp": {
+      "message": "This node was hardened by Chef Infra. Policyfile created at 2019-07-30 16:55:03 UTC\n"
+    }
+  },
+  "override_attributes": {
+
+  },
+  "solution_dependencies": {
+    "Policyfile": [
+      [
+        "hardening",
+        "= 0.1.0"
+      ],
+      [
+        "myapp",
+        "= 0.2.0"
+      ],
+      [
+        "os-hardening",
+        "= 4.0.0"
+      ],
+      [
+        "patching",
+        "= 0.1.0"
+      ],
+      [
+        "windows-hardening",
+        "= 0.9.1"
+      ],
+      [
+        "windows-security-policy",
+        "= 0.3.9"
+      ]
+    ],
+    "dependencies": {
+      "hardening (0.1.0)": [
+        [
+          "os-hardening",
+          ">= 0.0.0"
+        ],
+        [
+          "windows-hardening",
+          ">= 0.0.0"
+        ]
+      ],
+      "myapp (0.2.0)": [
+        [
+          "hardening",
+          ">= 0.0.0"
+        ]
+      ],
+      "os-hardening (4.0.0)": [
+
+      ],
+      "patching (0.1.0)": [
+
+      ],
+      "windows-hardening (0.9.1)": [
+        [
+          "windows-security-policy",
+          ">= 0.0.0"
+        ]
+      ],
+      "windows-security-policy (0.3.9)": [
+
+      ]
+    }
+  }
+}

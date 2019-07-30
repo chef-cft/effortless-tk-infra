@@ -6,6 +6,7 @@ driver:
 
 provisioner:
   name: shell
+  always_update_cookbooks: true
 
 verifier:
   name: inspec

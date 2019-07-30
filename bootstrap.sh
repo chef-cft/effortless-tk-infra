@@ -23,7 +23,7 @@ results_folder="/tmp/habitat/results"
 pkg_origin=$1
 pkg_name=$2
 
-export HAB_ORIGIN="your origin"
+export HAB_ORIGIN=aig
 cd /tmp/habitat
 hab pkg install core/hab-studio
 hab origin key generate
