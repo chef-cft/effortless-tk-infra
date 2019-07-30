@@ -1,7 +1,0 @@
----
-hostname: 127.0.0.1
-port: '2222'
-username: vagrant
-ssh_key: "/Users/eljeffe/work/winhab/base/.kitchen/kitchen-vagrant/base-centos-75/.vagrant/machines/default/virtualbox/private_key"
-last_action: create
-last_error: Kitchen::ActionFailed
