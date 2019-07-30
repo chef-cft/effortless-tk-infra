@@ -23,7 +23,6 @@ results_folder="/tmp/habitat/results"
 pkg_origin=$1
 pkg_name=$2
 
-export HAB_ORIGIN=aig
 export HAB_ORIGIN="your origin"
 cd /tmp/habitat
 hab pkg install core/hab-studio
