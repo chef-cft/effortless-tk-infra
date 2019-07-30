@@ -1,0 +1,13 @@
+interval = 300
+splay = 30
+splay_first_run = 0
+run_lock_timeout = 300
+log_level = "warn"
+chef_client_ident = ""
+env_path_prefix = "/sbin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin"
+ssl_verify_mode = ":verify_none"
+
+[data_collector]
+enable = false
+server_url = "https://example.a2server.com"
+token = "example_token"

@@ -1,0 +1,1 @@
+{"virtualbox":{"/tmp/habitat":{"guestpath":"/tmp/habitat","hostpath":"/Users/eljeffe/work/winhab/base","disabled":false,"__vagrantfile":true},"/tmp/omnibus/cache":{"create":true,"guestpath":"/tmp/omnibus/cache","hostpath":"/Users/eljeffe/.kitchen/cache","disabled":false,"__vagrantfile":true}}}
