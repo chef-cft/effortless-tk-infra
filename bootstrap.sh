@@ -19,11 +19,15 @@ else
   groupadd hab && true
 fi
 
+<<<<<<< HEAD
 results_folder="/tmp/habitat/results"
 pkg_origin=$1
 pkg_name=$2
 
 export HAB_ORIGIN=aig
+=======
+export HAB_ORIGIN="your origin"
+>>>>>>> 438777e14060567a95576875120dc18b76317f88
 cd /tmp/habitat
 hab pkg install core/hab-studio
 hab origin key generate
